@@ -31,7 +31,7 @@
                             <xs:sequence>
                                 <xs:element name="templateId">
                                     <xs:complexType>
-                                        <xs:attribute name="root" type="Id" fixed="2.16.840.1.113883.3.88.11.32.15"/>
+                                        <xs:attribute name="root" type="Id" fixed="2.16.840.1.113883.10.20.1.16"/>
                                     </xs:complexType>
                                 </xs:element>
                                 <xs:element name="code" type="VitalSignsCode"/>

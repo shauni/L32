@@ -87,7 +87,7 @@
                     <xs:attribute name="root" type="Id" fixed="2.16.840.1.113883.10.20.1.29"/>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="id" type="Id" />
+            <xs:element name="id" type="InstanceIdentifier" />
             <xs:element name="code" type="ProcedureCode" />
             <xs:element name="statusCode" type="ProcedureStatusCode" />
             <xs:element name="effectiveTime" type="DateRange" />

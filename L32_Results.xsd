@@ -82,7 +82,8 @@
                         <xs:simpleType>
                             <xs:restriction base="Id">
                                 <xs:enumeration value="2.16.840.1.113883.10.20.1.31"/>        <!-- CCD -->
-                                <xs:enumeration value="2.16.840.1.113883.3.88.11.32.16"/>   <!-- C32 -->
+                                <xs:enumeration value="2.16.840.1.113883.3.88.11.32.16"/>     <!-- C32 Results-->
+                                <xs:enumeration value="2.16.840.1.113883.3.88.11.32.15"/>     <!-- C32 Vital Signs-->
                             </xs:restriction>
                         </xs:simpleType>
                     </xs:attribute>

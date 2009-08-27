@@ -102,11 +102,18 @@
             <xs:element name="id" type="InstanceIdentifier"/>
             <xs:element name="code" type="ImmunizationsCode" minOccurs="0"/> <!-- standard unclear on proper codes -->
             <xs:element name="text" type="TextReference" minOccurs="0"/>
-            <xs:element name="statusCode" type="StatusCode" minOccurs="0"/>      
-            <xs:element name="effectiveTime" type="DateTime" minOccurs="0"/><!-- Administered date -->
+            <xs:element name="statusCode" type="StatusCode" minOccurs="0"/>             
+            <xs:element name="effectiveTime" type="TS" minOccurs="0" maxOccurs="2">
+                <xs:annotation>
+                    <xs:documentation>
+                        Used to indicate actual or intended start and stop date of a medication,
+                        and frequency of administration.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element> <!-- Administered date -->
             <xs:element name="approachSiteCode" type="GenericCode" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="consumable" type="MedicationInformation"/>
-            <xs:element name="performer" type="InformantOrPerformer" minOccurs="0"/>
+            <xs:element name="performer" type="InformantOrPerformer" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="informant" type="InformantOrPerformer" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element name="entryRelationship" type="MedicationInformationEntry" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>

@@ -201,11 +201,11 @@
                                     <xs:element name="code" type="AllergyProductCode"/>
                                     <xs:element name="name" type="xs:string"/>
                                 </xs:sequence>
-                                <xs:attribute name="typeCode" type="xs:string" fixed="MMAT"/>
+                                <xs:attribute name="classCode" type="xs:string" fixed="MMAT"/>
                             </xs:complexType>
                         </xs:element>
                     </xs:sequence>
-                    <xs:attribute name="typeCode" type="xs:string" fixed="MANU"/>
+                    <xs:attribute name="classCode" type="xs:string" fixed="MANU"/>
                 </xs:complexType>
             </xs:element>
         </xs:sequence>

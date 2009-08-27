@@ -191,7 +191,7 @@
         <xs:attribute name="typeCode">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
-                    <xs:enumeration value="SUBJ"/> <!-- Used with an observation element to record the Type of Medication -->
+                    <xs:enumeration value="SUBJ"/> <!-- Used with an observation element to record the Type of Medication, or with act for Patient Instructions -->
                     <xs:enumeration value="REFR"/> <!-- Used with an observation element to record the Status of Medication, or with a supply element to record Order Information -->
                     <xs:enumeration value="RSON"/> <!-- Used with an observation element to record the Indication, also used with an act element for an Immunization Refusal Reason -->
                     <xs:enumeration value="CAUS"/> <!-- Used with an observation element to record a Medication Reaction or Immunization Reaction-->
@@ -209,10 +209,18 @@
         <xs:sequence>
             <xs:element name="templateId">
                 <xs:complexType>
-                    <xs:attribute name="root" type="Id" fixed="2.16.840.1.113883.10.20.1.49"/> <!-- Template Identifier for Patient Instructions -->
+                    <xs:attribute name="root">
+                        <xs:simpleType>
+                            <xs:restriction base="Id">
+                                <xs:enumeration value="2.16.840.1.113883.10.20.1.49"/>   <!-- Template Identifier for Patient Instructions -->
+                                <xs:enumeration value="2.16.840.1.113883.10.20.1.43"/>   <!-- Template Identifier for Fullfillment Instructions-->
+                                <xs:enumeration value="2.16.840.1.113883.10.20.1.27"/>   <!-- Template Identifier for Immunization Refusal Reason-->
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute> 
                 </xs:complexType>
             </xs:element>
-            <xs:element name="code" type="GenericCode">
+            <xs:element name="code" type="GenericCode" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         For an Immunization, the reason for refusal SHALL be reported using 
@@ -279,7 +287,7 @@
             </xs:element>
             <xs:element name="id" type="InstanceIdentifier"/>   
             <xs:element name="statusCode" type="FillStatus" minOccurs="0"/>               
-            <xs:element name="effectiveTime" type="TS" minOccurs="0"/> 
+            <xs:element name="effectiveTime" type="DateTime" minOccurs="0"/> 
             <xs:element name="repeatNumber" minOccurs="0">
                 <xs:complexType>
                     <xs:attribute name="value" type="xs:integer" use="optional"/>
@@ -303,11 +311,15 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>                                
-            <xs:element name="informant" type="InformantOrPerformer" minOccurs="0"/>
+            <xs:element name="informant" type="InformantOrPerformer" maxOccurs="unbounded"/>
             <xs:element name="entryRelationship" minOccurs="0"> <!-- Used to record Medication Fill Number -->
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="sequenceNum"/>
+                        <xs:element name="sequenceNumber">
+                            <xs:complexType>
+                                <xs:attribute name="value" type="xs:integer"/>
+                            </xs:complexType>
+                        </xs:element>
                     </xs:sequence>
                     <xs:attribute name="typeCode" type="xs:string" fixed="COMP"/>
                 </xs:complexType>
@@ -360,7 +372,7 @@
         <xs:annotation>
             <xs:documentation>
                 Contains routeCode or adminstrationUnitCode information.
-                Route code shall have a a value drawn from FDA route of adminstration,
+                Route code shall have a value drawn from FDA route of administration,
                 and indicates how the medication is received by the patient.
                 See http://www.fda.gov/Drugs/DevelopmentApprovalProcess/UCM070829
                 The administration unit code shall have a value drawn from the FDA 
@@ -464,7 +476,7 @@
                 section, then the product name or brand name is coded using RxNorm, or NDC.
                 When only the class of the drug is known use NDF-RT. FDA UNII codes can be 
                 used when there are no suitable codes in the other vocabularies to identify 
-                the medication.
+                the medication.  Use CVX codes for Immunizations.
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>            

@@ -56,7 +56,7 @@
             </xs:documentation>
         </xs:annotation>
         <xs:attribute name="code" type="xs:string" fixed="48768-6"/>
-        <xs:attribute name="displayName" type="xs:string" fixed="“Payment sources"/>
+        <xs:attribute name="displayName" type="xs:string" fixed="Payment sources"/>
         <xs:attribute name="codeSystemName" type="xs:string" fixed="LOINC" /> 
         <xs:attribute name="codeSystem" type="Id" fixed="2.16.840.1.113883.6.1" />
     </xs:complexType>    
@@ -150,8 +150,8 @@
                 </xs:complexType> 
             </xs:element>
             <xs:element name="performer" type="Payer"/>
-            <xs:element name="participant" type="MemberOrSubscriberInformation"/>
-            <xs:element name="entryRelationship" type="HealthPlan" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="participant" type="MemberOrSubscriberInformation" maxOccurs="unbounded"/>
+            <xs:element name="entryRelationship" type="HealthPlan" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="classCode" type="xs:string" fixed="ACT"/>
         <xs:attribute name="moodCode" type="xs:string" fixed="EVN"/>

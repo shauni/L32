@@ -29,7 +29,7 @@
                     <xs:attribute name="root" type="Id" fixed="2.16.840.1.113883.3.88.11.32.3"/>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="time" type="DateTime"/> <!-- The period over which the support is provided -->            
+            <xs:element name="time" type="DateRange"/> <!-- The period over which the support is provided -->            
             <xs:element name="associatedEntity" type="SupportContact"/>               
         </xs:sequence>
         <xs:attribute name="typeCode" type="xs:string" fixed="IND"/> <!-- Indirect Participant, next of kin -->
